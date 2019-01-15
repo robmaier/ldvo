@@ -1,0 +1,10 @@
+/**
+\mainpage LDVO Code Documentation
+
+\tableofcontents
+
+LDVO is a lightweight header-only C++ library for estimating dense visual odometry for RGB-D cameras such as the Microsoft Kinect. This doxygen page provides an in-depth documentation of the source code.
+
+Please consult the <a href="files.html">Files</a> page for an overview.
+*/
+

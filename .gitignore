@@ -1,0 +1,14 @@
+# subfolders
+build/
+data/
+
+# Qt Creator
+CMakeLists.txt.*
+# VS Code
+.vscode
+# CLion
+.idea
+# Eclipse
+.cproject
+.project
+.settings
