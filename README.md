@@ -78,14 +78,7 @@ wget https://vision.in.tum.de/rgbd/dataset/freiburg1/rgbd_dataset_freiburg1_desk
 tar -xvzf rgbd_dataset_freiburg1_desk.tgz
 mv rgbd_dataset_freiburg1_desk fr1_desk
 ```
-
-The TUM benchmark also provides several useful tools for working with the datasets, we also download them into ```data/```:
-```
-wget https://svncvpr.in.tum.de/cvpr-ros-pkg/trunk/rgbd_benchmark/rgbd_benchmark_tools/src/rgbd_benchmark_tools/associate.py
-wget https://svncvpr.in.tum.de/cvpr-ros-pkg/trunk/rgbd_benchmark/rgbd_benchmark_tools/src/rgbd_benchmark_tools/evaluate_ate.py
-wget https://svncvpr.in.tum.de/cvpr-ros-pkg/trunk/rgbd_benchmark/rgbd_benchmark_tools/src/rgbd_benchmark_tools/evaluate_rpe.py
-wget https://svncvpr.in.tum.de/cvpr-ros-pkg/trunk/rgbd_benchmark/rgbd_benchmark_tools/src/rgbd_benchmark_tools/plot_trajectory_into_image.py
-```
+The TUM benchmark also provides several useful tools for working with the datasets, which are contained already in ```data/```.
 
 The color and depth images in the dataset are initially not synchronized, we can associate them using their timestamps and generate the associations file ```fr1_desk/rgbd_assoc.txt```:
 ```
