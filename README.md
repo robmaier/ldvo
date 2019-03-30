@@ -20,6 +20,7 @@ If you find the LDVO source code useful in your research, please feel free to us
   title = {LDVO - Lightweight Dense Visual Odometry},
   author = {Maier, Robert},
   howpublished = "\url{https://github.com/robmaier/ldvo}",
+  year={2018}
 }
 ```
 
@@ -185,7 +186,7 @@ prev_frame->fill(gray_prev, depth_prev, time_color_prev, time_depth_prev);
 // create and fill current frame
 std::shared_ptr<ldvo::Frame> cur_frame =
         std::make_shared<ldvo::Frame>(w, h);
-prev_frame->fill(gray_cur, depth_cur, time_color_cur, time_depth_cur);
+cur_frame->fill(gray_cur, depth_cur, time_color_cur, time_depth_cur);
 
 // create and fill image pyramids
 int num_levels = tracker_cfg.num_levels;
