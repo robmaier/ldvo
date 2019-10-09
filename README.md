@@ -49,7 +49,7 @@ sudo apt install cmake libopencv-dev doxygen graphviz
 ```
 
 ### Build LDVO
-To compile the LDVO including the example application, use the standard CMake approach:
+To compile LDVO including the example application, use the standard CMake approach:
 ```
 mkdir build
 cd build/
