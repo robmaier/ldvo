@@ -171,7 +171,7 @@ namespace ldvo
     {
         if (id >= files_color_.size())
             return cv::Mat();
-        cv::Mat gray8 = cv::imread(files_color_[id], CV_LOAD_IMAGE_GRAYSCALE);
+        cv::Mat gray8 = cv::imread(files_color_[id], cv::IMREAD_GRAYSCALE);
         // convert gray to float
         cv::Mat gray;
         gray8.convertTo(gray, CV_32FC1, 1.0 / 255.0);
@@ -184,7 +184,7 @@ namespace ldvo
         if (id >= files_depth_.size())
             return cv::Mat();
         //fill/read 16 bit depth image
-        cv::Mat depth16 = cv::imread(files_depth_[id], CV_LOAD_IMAGE_ANYDEPTH | CV_LOAD_IMAGE_ANYCOLOR);
+        cv::Mat depth16 = cv::imread(files_depth_[id], cv::IMREAD_ANYDEPTH | cv::IMREAD_ANYCOLOR);
         cv::Mat depth;
         depth16.convertTo(depth, CV_32FC1, (1.0 / 5000.0));
 

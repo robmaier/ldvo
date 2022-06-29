@@ -21,7 +21,7 @@
 ##
 
 #==============================================================================
-CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12 FATAL_ERROR)
 PROJECT(LDVO C CXX)
 
 #==============================================================================
@@ -40,7 +40,7 @@ OPTION(BUILD_DOCUMENTATION "Build Doxygen documentation" ON)
 INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/third_party/include/)
 
 # OpenCV
-FIND_PACKAGE(OpenCV COMPONENTS core highgui imgproc REQUIRED)
+FIND_PACKAGE(OpenCV 4.0.0 COMPONENTS core highgui imgproc REQUIRED)
 
 #==============================================================================
 # Header-only library and example applications
