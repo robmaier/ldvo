@@ -59,9 +59,9 @@ def transform44(l):
     nq = numpy.dot(q, q)
     if nq < _EPS:
         return numpy.array((
-        (                1.0,                 0.0,                 0.0, t[0])
-        (                0.0,                 1.0,                 0.0, t[1])
-        (                0.0,                 0.0,                 1.0, t[2])
+        (                1.0,                 0.0,                 0.0, t[0]),
+        (                0.0,                 1.0,                 0.0, t[1]),
+        (                0.0,                 0.0,                 1.0, t[2]),
         (                0.0,                 0.0,                 0.0, 1.0)
         ), dtype=numpy.float64)
     q *= numpy.sqrt(2.0 / nq)
@@ -176,7 +176,7 @@ def distances_along_trajectory(traj):
     """
     Compute the translational distances along a trajectory. 
     """
-    keys = traj.keys()
+    keys = list(traj)
     keys.sort()
     motion = [ominus(traj[keys[i+1]],traj[keys[i]]) for i in range(len(keys)-1)]
     distances = [0]
@@ -190,7 +190,7 @@ def rotations_along_trajectory(traj,scale):
     """
     Compute the angular rotations along a trajectory. 
     """
-    keys = traj.keys()
+    keys = list(traj)
     keys.sort()
     motion = [ominus(traj[keys[i+1]],traj[keys[i]]) for i in range(len(keys)-1)]
     distances = [0]
@@ -224,8 +224,8 @@ def evaluate_trajectory(traj_gt,traj_est,param_max_pairs=10000,param_fixed_delta
     Output:
     list of compared poses and the resulting translation and rotation error
     """
-    stamps_gt = list(traj_gt.keys())
-    stamps_est = list(traj_est.keys())
+    stamps_gt = list(traj_gt)
+    stamps_est = list(traj_est)
     stamps_gt.sort()
     stamps_est.sort()
     
@@ -240,7 +240,7 @@ def evaluate_trajectory(traj_gt,traj_est,param_max_pairs=10000,param_fixed_delta
         raise Exception("Number of overlap in the timestamps is too small. Did you run the evaluation on the right files?")
 
     if param_delta_unit=="s":
-        index_est = list(traj_est.keys())
+        index_est = list(traj_est)
         index_est.sort()
     elif param_delta_unit=="m":
         index_est = distances_along_trajectory(traj_est)
@@ -348,23 +348,23 @@ if __name__ == '__main__':
         f.close()
     
     if args.verbose:
-        print "compared_pose_pairs %d pairs"%(len(trans_error))
+        print("compared_pose_pairs " + str(len(trans_error)) + " pairs")
 
-        print "translational_error.rmse %f m"%numpy.sqrt(numpy.dot(trans_error,trans_error) / len(trans_error))
-        print "translational_error.mean %f m"%numpy.mean(trans_error)
-        print "translational_error.median %f m"%numpy.median(trans_error)
-        print "translational_error.std %f m"%numpy.std(trans_error)
-        print "translational_error.min %f m"%numpy.min(trans_error)
-        print "translational_error.max %f m"%numpy.max(trans_error)
+        print("translational_error.rmse " + str(numpy.sqrt(numpy.dot(trans_error,trans_error) / len(trans_error))) + " m")
+        print("translational_error.mean " + str(numpy.mean(trans_error)) + " m")
+        print("translational_error.median " + str(numpy.median(trans_error)) + " m")
+        print("translational_error.std " + str(numpy.std(trans_error)) + " m")
+        print("translational_error.min " + str(numpy.min(trans_error)) + " m")
+        print("translational_error.max " + str(numpy.max(trans_error)) + " m")
 
-        print "rotational_error.rmse %f deg"%(numpy.sqrt(numpy.dot(rot_error,rot_error) / len(rot_error)) * 180.0 / numpy.pi)
-        print "rotational_error.mean %f deg"%(numpy.mean(rot_error) * 180.0 / numpy.pi)
-        print "rotational_error.median %f deg"%(numpy.median(rot_error) * 180.0 / numpy.pi)
-        print "rotational_error.std %f deg"%(numpy.std(rot_error) * 180.0 / numpy.pi)
-        print "rotational_error.min %f deg"%(numpy.min(rot_error) * 180.0 / numpy.pi)
-        print "rotational_error.max %f deg"%(numpy.max(rot_error) * 180.0 / numpy.pi)
+        print("rotational_error.rmse " + str(numpy.sqrt(numpy.dot(rot_error,rot_error) / len(rot_error)) * 180.0 / numpy.pi) + " deg")
+        print("rotational_error.mean " + str(numpy.mean(rot_error) * 180.0 / numpy.pi) + " deg")
+        print("rotational_error.median " + str(numpy.median(rot_error) * 180.0 / numpy.pi) + " deg")
+        print("rotational_error.std " + str(numpy.std(rot_error) * 180.0 / numpy.pi) + " deg")
+        print("rotational_error.min " + str(numpy.min(rot_error) * 180.0 / numpy.pi) + " deg")
+        print("rotational_error.max " + str(numpy.max(rot_error) * 180.0 / numpy.pi) + " deg")
     else:
-        print numpy.mean(trans_error)
+        print(numpy.mean(trans_error))
 
     if args.plot:    
         import matplotlib
